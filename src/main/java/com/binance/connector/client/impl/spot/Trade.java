@@ -24,7 +24,7 @@ public class Trade {
         this.showLimitUsage = showLimitUsage;
     }
 
-    private final String TEST_NEW_ORDER = "/api/v3/order/test";
+    final String TEST_NEW_ORDER = "/api/v3/order/test";
     /**
      * Test new order creation and signature/recvWindow long.
      * Creates and validates a new order but does not send it into the matching engine.
@@ -177,7 +177,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ALL_OPEN_ORDERS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String ALL_ORDERS = "/api/v3/allOrders";
+    final String ALL_ORDERS = "/api/v3/allOrders";
     /**
      * Get all account orders; active, canceled, or filled.
      * <br><br>
@@ -202,7 +202,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ALL_ORDERS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String OCO_ORDER = "/api/v3/order/oco";
+    final String OCO_ORDER = "/api/v3/order/oco";
     /**
      * Send in a new OCO.
      * <br><br>
@@ -239,7 +239,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, OCO_ORDER, parameters, HttpMethod.POST, showLimitUsage);
     }
 
-    private final String OCO_LIST = "/api/v3/orderList";
+    final String OCO_LIST = "/api/v3/orderList";
     /**
      * Cancel an entire Order List.
      * <br><br>
@@ -283,7 +283,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, OCO_LIST, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String ALL_OCO_LIST = "/api/v3/allOrderList";
+    final String ALL_OCO_LIST = "/api/v3/allOrderList";
     /**
      * Retrieves all OCO based on provided optional parameters
      * <br><br>
@@ -306,7 +306,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ALL_OCO_LIST, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String ALL_OPEN_OCO_LIST = "/api/v3/openOrderList";
+    final String ALL_OPEN_OCO_LIST = "/api/v3/openOrderList";
     /**
      * GET /api/v3/openOrderList
      * <br>
@@ -323,7 +323,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ALL_OPEN_OCO_LIST, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String ACCOUNT_INFO = "/api/v3/account";
+    final String ACCOUNT_INFO = "/api/v3/account";
     /**
      * Get current account information.
      * <br><br>
@@ -342,7 +342,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ACCOUNT_INFO, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String ACCOUNT_TRADES = "/api/v3/myTrades";
+    final String ACCOUNT_TRADES = "/api/v3/myTrades";
     /**
      * Get trades for a specific account and symbol.
      * <br><br>
@@ -368,7 +368,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, ACCOUNT_TRADES, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    private final String RATE_LIMIT = "/api/v3/rateLimit/order";
+    final String RATE_LIMIT = "/api/v3/rateLimit/order";
     /**
      * Displays the user's current order count usage for all intervals.
      * <br><br>
