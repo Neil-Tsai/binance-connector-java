@@ -6,17 +6,12 @@ import com.binance.connector.client.impl.futures.usd.Market;
 import com.binance.connector.client.impl.futures.usd.Trade;
 import com.binance.connector.client.impl.futures.usd.UserData;
 
-public class FuturesUClientImpl implements FuturesUClient {
-
-    private final String apiKey;
-    private final String secretKey;
-    private final String baseUrl;
-    private boolean showLimitUsage = false;
+public class FuturesUClientImpl extends BaseClientImpl implements FuturesUClient {
 
     public FuturesUClientImpl() {
         this.apiKey = null;
         this.secretKey = null;
-        this.baseUrl = DefaultUrls.PROD_URL;
+        this.baseUrl = DefaultUrls.U_PROD_URL;
     }
 
     public FuturesUClientImpl(String baseUrl) {
@@ -35,17 +30,13 @@ public class FuturesUClientImpl implements FuturesUClient {
     public FuturesUClientImpl(String apiKey, String secretKey) {
         this.apiKey = apiKey;
         this.secretKey = secretKey;
-        this.baseUrl = DefaultUrls.PROD_URL;
+        this.baseUrl = DefaultUrls.U_PROD_URL;
     }
 
     public FuturesUClientImpl(String apiKey, String secretKey, String baseUrl) {
         this.apiKey = apiKey;
         this.secretKey = secretKey;
         this.baseUrl = baseUrl;
-    }
-
-    public void setShowLimitUsage (boolean showLimitUsage) {
-        this.showLimitUsage = showLimitUsage;
     }
 
     @Override

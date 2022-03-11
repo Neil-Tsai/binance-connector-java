@@ -9,7 +9,6 @@ import com.binance.connector.client.utils.WebSocketCallback;
 import com.binance.connector.client.utils.WebSocketConnection;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -26,11 +25,8 @@ import org.slf4j.LoggerFactory;
  * <br>
  * Response will be returned as callback.
  */
-public class WebsocketClientImpl implements WebsocketClient {
-    private final String baseUrl;
-    private final Map<Integer, WebSocketConnection> connections = new HashMap<>();
-    private final WebSocketCallback noopCallback = msg -> {
-    };
+public class WebsocketClientImpl extends BaseWebSocketClientImpl implements WebsocketClient {
+
     private static final Logger logger = LoggerFactory.getLogger(WebsocketClientImpl.class);
 
     public WebsocketClientImpl() {
@@ -61,12 +57,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #aggTradeStream(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int aggTradeStream(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -94,12 +90,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #tradeStream(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int tradeStream(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -127,13 +123,13 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #klineStream(String, String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param interval
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param interval interval
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int klineStream(String symbol, String interval, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -162,12 +158,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #miniTickerStream(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int miniTickerStream(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -196,11 +192,11 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #allMiniTickerStream(WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int allMiniTickerStream(WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -229,12 +225,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #symbolTicker(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int symbolTicker(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -263,11 +259,11 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #allTickerStream(WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int allTickerStream(WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -295,12 +291,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #bookTicker(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int bookTicker(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -327,11 +323,11 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #allBookTickerStream(WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int allBookTickerStream(WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -361,14 +357,14 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #partialDepthStream(String, int, int, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param levels
-     * @param speed
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param levels levels
+     * @param speed speed
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int partialDepthStream(String symbol, int levels, int speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -397,13 +393,13 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #diffDepthStream(String, int, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param symbol
-     * @param speed
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param symbol symbol
+     * @param speed speed
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int diffDepthStream(String symbol, int speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -422,19 +418,18 @@ public class WebsocketClientImpl implements WebsocketClient {
      */
     @Override
     public int listenUserStream(String listenKey, WebSocketCallback callback) {
-        Request request = RequestBuilder.buildWebsocketRequest(String.format("%s/ws/%s", baseUrl, listenKey));
         return listenUserStream(listenKey, noopCallback, callback, noopCallback, noopCallback);
     }
 
     /**
      * Same as {@link #listenUserStream(String, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param listenKey
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param listenKey listenKey
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int listenUserStream(String listenKey, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -458,12 +453,12 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Same as {@link #combineStreams(ArrayList, WebSocketCallback)} plus accepts callbacks for all major websocket connection events.
      *
-     * @param streams
-     * @param onOpenCallback
-     * @param onMessageCallback
-     * @param onClosingCallback
-     * @param onFailureCallback
-     * @return
+     * @param streams streams
+     * @param onOpenCallback onOpenCallback
+     * @param onMessageCallback onMessageCallback
+     * @param onClosingCallback onClosingCallback
+     * @param onFailureCallback onFailureCallback
+     * @return int
      */
     @Override
     public int combineStreams(ArrayList<String> streams, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback) {
@@ -475,7 +470,7 @@ public class WebsocketClientImpl implements WebsocketClient {
     /**
      * Closes a specific stream based on stream Id.
      *
-     * @param connectionId
+     * @param connectionId connectionId
      */
     @Override
     public void closeConnection(int connectionId) {

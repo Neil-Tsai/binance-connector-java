@@ -10,16 +10,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class FuturesUWebsocketClientImpl implements FuturesUWebsocketClient {
-    private final String baseUrl;
-    private final Map<Integer, WebSocketConnection> connections = new HashMap<>();
-    private final WebSocketCallback noopCallback = msg -> {
-    };
-    private static final Logger logger = LoggerFactory.getLogger(WebsocketClientImpl.class);
+public class FuturesUWebsocketClientImpl extends BaseWebSocketClientImpl implements FuturesUWebsocketClient {
+
+    private static final Logger logger = LoggerFactory.getLogger(FuturesUWebsocketClientImpl.class);
 
     public FuturesUWebsocketClientImpl() {
         this.baseUrl = DefaultUrls.U_WS_URL;

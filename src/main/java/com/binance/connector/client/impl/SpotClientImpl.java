@@ -23,11 +23,7 @@ import com.binance.connector.client.impl.spot.UserData;
 import com.binance.connector.client.impl.spot.Wallet;
 
 
-public class SpotClientImpl implements SpotClient {
-    private final String apiKey;
-    private final String secretKey;
-    private final String baseUrl;
-    private boolean showLimitUsage = false;
+public class SpotClientImpl extends BaseClientImpl implements SpotClient {
 
     public SpotClientImpl() {
         this.apiKey = null;
@@ -58,10 +54,6 @@ public class SpotClientImpl implements SpotClient {
         this.apiKey = apiKey;
         this.secretKey = secretKey;
         this.baseUrl = baseUrl;
-    }
-
-    public void setShowLimitUsage (boolean showLimitUsage) {
-        this.showLimitUsage = showLimitUsage;
     }
 
     @Override
