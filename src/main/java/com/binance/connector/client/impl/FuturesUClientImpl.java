@@ -46,11 +46,11 @@ public class FuturesUClientImpl extends BaseClientImpl implements FuturesUClient
 
     @Override
     public Trade createTrade() {
-        return null;
+        return new Trade(baseUrl, apiKey, secretKey, showLimitUsage);
     }
 
     @Override
     public UserData createUserData() {
-        return null;
+        return new UserData(baseUrl, apiKey, showLimitUsage);
     }
 }
