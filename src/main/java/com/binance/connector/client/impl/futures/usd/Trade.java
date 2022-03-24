@@ -357,7 +357,8 @@ public class Trade {
      */
     public String positionMargin(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "marginType", String.class);
+        ParameterChecker.checkParameter(parameters, "amount", String.class);
+        ParameterChecker.checkParameter(parameters, "type", String.class);
         ParameterChecker.checkParameter(parameters, "timestamp", String.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_MARGIN, parameters, HttpMethod.POST, showLimitUsage);
     }
