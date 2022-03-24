@@ -1,15 +1,18 @@
 # Binance Public API connector Java
 [![maven](https://img.shields.io/maven-central/v/io.github.binance/binance-connector-java)](https://repo1.maven.org/maven2/io/github/binance/binance-connector-java/)
+[![](https://jitpack.io/v/Neil-Tsai/binance-connector-java.svg)](https://jitpack.io/#Neil-Tsai/binance-connector-java)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This is a lightweight library that works as a connector to the [Binance public API](https://github.com/binance/binance-spot-api-docs)
 
-- Supported APIs:
+- Supported APIs: v1.3.0
   - `/api/*`
   - `/sapi/*`
   - Spot Websocket Market Stream
   - Spot User Data Stream
 - Test cases and examples
+- Suported APIs: 1.4.3
+  - `/fapi/*`
 
 ## Installation
 Replace `LATEST_VERSION` with the latest version number and paste the snippet below in `pom.xml`
