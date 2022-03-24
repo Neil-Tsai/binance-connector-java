@@ -78,6 +78,7 @@ public class Market {
 
     public String continuousContractKline(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol" ,String.class);
+        ParameterChecker.checkParameter(parameters, "contractType" ,String.class);
         ParameterChecker.checkParameter(parameters, "interval" ,String.class);
         return requestHandler.sendPublicRequest(baseUrl, CONTINUOUS_CONTRACT_KLINE, parameters, HttpMethod.GET, showLimitUsage);
     }
