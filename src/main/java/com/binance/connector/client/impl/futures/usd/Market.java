@@ -34,16 +34,8 @@ public class Market {
 
     final String EXCHANGE_INFO = "/fapi/v1/exchangeInfo";
 
-    public String exchangeInfo(LinkedHashMap<String,Object> parameters) {
-        if (parameters.containsKey("symbol") && parameters.containsKey("symbols")) {
-            throw new BinanceConnectorException("symbol and symbols cannot be sent together.");
-        }
-        if (parameters.containsKey("symbols")) {
-            ParameterChecker.checkParameterType(parameters.get("symbols"), ArrayList.class, "symbols");
-            parameters.put("symbols", JSONParser.getJSONArray(
-                    (ArrayList<?>) parameters.get("symbols"), "symbols"));
-        }
-        return requestHandler.sendPublicRequest(baseUrl, EXCHANGE_INFO, parameters, HttpMethod.GET, showLimitUsage);
+    public String exchangeInfo() {
+        return requestHandler.sendPublicRequest(baseUrl, EXCHANGE_INFO, null, HttpMethod.GET, showLimitUsage);
     }
 
     final String DEPTH = "/fapi/v1/depth";
