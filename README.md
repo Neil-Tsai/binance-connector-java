@@ -11,7 +11,7 @@ This is a lightweight library that works as a connector to the [Binance public A
   - Spot Websocket Market Stream
   - Spot User Data Stream
 - Test cases and examples
-- Suported APIs: 1.4.3
+- Suported APIs: 1.4.0 up
   - `/fapi/*`
 
 ## Installation
