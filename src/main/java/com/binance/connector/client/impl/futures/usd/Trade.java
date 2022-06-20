@@ -467,7 +467,7 @@ public class Trade {
         return requestHandler.sendSignedRequest(baseUrl, INCOME, parameters, HttpMethod.GET, showLimitUsage);
     }
 
-    final String LEVERAGE_BRACKET = " /fapi/v1/leverageBracket";
+    final String LEVERAGE_BRACKET = "/fapi/v1/leverageBracket";
 
     /**
      * 杠杆分层标准
