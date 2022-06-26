@@ -38,10 +38,10 @@ public interface FuturesUWebsocketClient {
     int partialDepthStream(String symbol, int levels, int speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
     int diffDepthStream(String symbol, int speed, WebSocketCallback callback);
     int diffDepthStream(String symbol, int speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
-    int blvtInfoStreams(String tokenName, WebSocketCallback callback);
-    int blvtInfoStreams(String tokenName, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
-    int blvtNavKlineStreams(String tokenName, TimeInterval speed, WebSocketCallback callback);
-    int blvtNavKlineStreams(String tokenName, TimeInterval speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
+//    int blvtInfoStreams(String tokenName, WebSocketCallback callback);
+//    int blvtInfoStreams(String tokenName, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
+//    int blvtNavKlineStreams(String tokenName, TimeInterval speed, WebSocketCallback callback);
+//    int blvtNavKlineStreams(String tokenName, TimeInterval speed, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
     int compositeIndexSymbolInfoStreams(String symbol, WebSocketCallback callback);
     int compositeIndexSymbolInfoStreams(String symbol, WebSocketCallback onOpenCallback, WebSocketCallback onMessageCallback, WebSocketCallback onClosingCallback, WebSocketCallback onFailureCallback);
     int listenUserStream(String listenKey, WebSocketCallback callback);

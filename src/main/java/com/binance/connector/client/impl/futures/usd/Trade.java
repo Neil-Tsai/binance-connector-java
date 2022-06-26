@@ -18,12 +18,12 @@ public class Trade {
         this.showLimitUsage = showLimitUsage;
     }
 
-    /*
-     * 划转
-     */
-
     /**
+     * 划转
+     * https://binance-docs.github.io/apidocs/spot/cn/#user_data-67
+     *
      * 获取划转历史
+     * https://binance-docs.github.io/apidocs/spot/cn/#user_data-67
      */
 
     final String POSITION_SIDE_DUAL = "/fapi/v1/positionSide/dual";
