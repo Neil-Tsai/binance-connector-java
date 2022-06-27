@@ -1,5 +1,6 @@
 package examples.future.trade;
 
+import com.binance.connector.client.enums.DualSidePosition;
 import examples.future.FutureClient;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -9,7 +10,7 @@ public class ChangePositionSide extends FutureClient {
     private static final Logger logger = LoggerFactory.getLogger(ChangePositionSide.class);
     public static void main(String[] args) {
         try {
-            parameters.put("dualSidePosition", "true");
+            parameters.put("dualSidePosition", DualSidePosition.DOUBLE.toString());
             parameters.put("timestamp", System.currentTimeMillis());
             String result = client.createTrade().changePositionSide(parameters);
             logger.info(result);

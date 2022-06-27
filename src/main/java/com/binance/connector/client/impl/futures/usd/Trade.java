@@ -3,8 +3,7 @@ package com.binance.connector.client.impl.futures.usd;
 import com.binance.connector.client.enums.HttpMethod;
 import com.binance.connector.client.utils.ParameterChecker;
 import com.binance.connector.client.utils.RequestHandler;
-
-import java.util.ArrayList;
+import org.json.JSONArray;
 import java.util.LinkedHashMap;
 
 public class Trade {
@@ -42,7 +41,6 @@ public class Trade {
      */
     public String changePositionSide(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "dualSidePosition", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_SIDE_DUAL, parameters, HttpMethod.POST, showLimitUsage);
     }
     /**
@@ -57,7 +55,6 @@ public class Trade {
      * @return string
      */
     public String getPositionSide(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_SIDE_DUAL, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -77,7 +74,6 @@ public class Trade {
      */
     public String changeMultiAssetsMargin(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "multiAssetsMargin", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, MULTI_ASSSETS_MARGIN, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -93,7 +89,6 @@ public class Trade {
      * @return s
      */
     public String queryMultiAssetsMargin(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, MULTI_ASSSETS_MARGIN, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -105,7 +100,6 @@ public class Trade {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "side", String.class);
         ParameterChecker.checkParameter(parameters, "type", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, TEST_NEW_ORDER, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -156,7 +150,6 @@ public class Trade {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "side", String.class);
         ParameterChecker.checkParameter(parameters, "type", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ORDER, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -169,7 +162,6 @@ public class Trade {
      */
     public String getOrder(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ORDER, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -182,7 +174,6 @@ public class Trade {
      */
     public String cancelOrder(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ORDER, parameters, HttpMethod.DELETE, showLimitUsage);
     }
 
@@ -197,8 +188,7 @@ public class Trade {
      * timestamp	LONG	YES
      */
     public String newBatchOrders(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "batchOrders", ArrayList.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
+        ParameterChecker.checkParameter(parameters, "batchOrders", JSONArray.class);
         return requestHandler.sendSignedRequest(baseUrl, BATCH_ORDERS, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -208,23 +198,22 @@ public class Trade {
      * @return s
      */
     public String cancelBatchOrders(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "batchOrders", ArrayList.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
+        ParameterChecker.checkParameter(parameters, "symbol", String.class);
+        ParameterChecker.checkParameter(parameters, "orderIdList", JSONArray.class);
         return requestHandler.sendSignedRequest(baseUrl, BATCH_ORDERS, parameters, HttpMethod.DELETE, showLimitUsage);
     }
 
-    final String ALL_OPEN_ORDERS = "/fapi/v1/allOpenOrders ";
+    final String ALL_OPEN_ORDERS = "/fapi/v1/allOpenOrders";
 
     /**
      * 撤销全部订单
      */
     public String cancelAllOpenOrders(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ALL_OPEN_ORDERS, parameters, HttpMethod.DELETE, showLimitUsage);
     }
 
-    final String OPEN_ORDER = "/fapi/v1/openOrder ";
+    final String OPEN_ORDER = "/fapi/v1/openOrder";
 
     /**
      * 查询当前挂单
@@ -233,17 +222,15 @@ public class Trade {
      */
     public String getOpenOrder(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, OPEN_ORDER, parameters, HttpMethod.GET, showLimitUsage);
     }
+    // 方法棄用，待確認 */
+//    public String cancelOpenOrder(LinkedHashMap<String,Object> parameters) {
+//        ParameterChecker.checkParameter(parameters, "symbol", String.class);
+//        return requestHandler.sendSignedRequest(baseUrl, OPEN_ORDERS, parameters, HttpMethod.DELETE, showLimitUsage);
+//    }
 
-    public String cancelOpenOrder(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
-        return requestHandler.sendSignedRequest(baseUrl, OPEN_ORDERS, parameters, HttpMethod.DELETE, showLimitUsage);
-    }
-
-    final String OPEN_ORDERS = "/fapi/v1/OpenOrders ";
+    final String OPEN_ORDERS = "/fapi/v1/OpenOrders";
 
     /**
      * 查看当前全部挂单
@@ -251,7 +238,6 @@ public class Trade {
      * @return s
      */
     public String getOpenOrders(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, OPEN_ORDERS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -261,7 +247,6 @@ public class Trade {
     final String ALL_ORDERS = "/api/v1/allOrders";
     public String getAllOrders(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ALL_ORDERS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -272,7 +257,6 @@ public class Trade {
     public String countdownCancelAll(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "countdownTime", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, COUNTDOWN_CANCEL_ALL, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -284,7 +268,6 @@ public class Trade {
      * @return s
      */
     public String getBalance(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ACCOUNT_BALANCE, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -296,7 +279,6 @@ public class Trade {
      * @return s
      */
     public String account(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ACCOUNT_INFO, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -316,7 +298,6 @@ public class Trade {
     public String leverage(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "leverage", Integer.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, LEVERAGE, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -336,7 +317,6 @@ public class Trade {
     public String marginType(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "marginType", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, MARGIN_TYPE, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -360,7 +340,6 @@ public class Trade {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
         ParameterChecker.checkParameter(parameters, "amount", String.class);
         ParameterChecker.checkParameter(parameters, "type", Integer.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", String.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_MARGIN, parameters, HttpMethod.POST, showLimitUsage);
     }
 
@@ -382,7 +361,6 @@ public class Trade {
      */
     public String getPositionMarginHistory(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_MARGIN_HISTORY, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -399,7 +377,6 @@ public class Trade {
      * @return s
      */
     public String positionRisk(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, POSITION_RISK, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -424,7 +401,6 @@ public class Trade {
      */
     public String getUserTrades(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, USER_TRADES, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -463,7 +439,6 @@ public class Trade {
      * @return s
      */
     public String getIncome(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, INCOME, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -480,7 +455,6 @@ public class Trade {
      * @return s
      */
     public String leverageBracket(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, LEVERAGE_BRACKET, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -497,7 +471,6 @@ public class Trade {
      * @return s
      */
     public String getADLQuantile(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, ADL_Quantile, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -522,7 +495,6 @@ public class Trade {
      * @return s
      */
     public String getForceOrders(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, FORCE_ORDERS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -539,7 +511,6 @@ public class Trade {
      * @return s
      */
     public String getTradingStatus(LinkedHashMap<String,Object> parameters) {
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, API_TRADING_STATUS, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -557,7 +528,6 @@ public class Trade {
      */
     public String getCommissionRate(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "symbol", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, COMMISSION_RATE, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -580,7 +550,6 @@ public class Trade {
     public String getIncomeId(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "startTime", Long.class);
         ParameterChecker.checkParameter(parameters, "endTime", Long.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, INCOME_ASYN, parameters, HttpMethod.GET, showLimitUsage);
     }
 
@@ -600,7 +569,6 @@ public class Trade {
      */
     public String getIncomeLink(LinkedHashMap<String,Object> parameters) {
         ParameterChecker.checkParameter(parameters, "downloadId", String.class);
-        ParameterChecker.checkParameter(parameters, "timestamp", Long.class);
         return requestHandler.sendSignedRequest(baseUrl, INCOME_ID, parameters, HttpMethod.GET, showLimitUsage);
     }
 }
