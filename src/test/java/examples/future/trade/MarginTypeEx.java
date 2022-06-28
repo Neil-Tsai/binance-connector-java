@@ -1,6 +1,5 @@
 package examples.future.trade;
 
-import com.binance.connector.client.enums.MarginType;
 import examples.future.FutureClient;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -12,7 +11,7 @@ public class MarginTypeEx extends FutureClient {
     public static void main(String[] args) {
         try {
             parameters.put("symbol", "BTCUSDT");
-            parameters.put("marginType", MarginType.ISOLATED.toString());
+            parameters.put("marginType", "ISOLATED");
             String result = client.createTrade().marginType(parameters);
             logger.info(result);
         } catch (Exception e) {

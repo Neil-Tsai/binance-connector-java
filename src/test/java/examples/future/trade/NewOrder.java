@@ -1,9 +1,5 @@
 package examples.future.trade;
 
-import com.binance.connector.client.enums.OrderSide;
-import com.binance.connector.client.enums.OrderTypes;
-import com.binance.connector.client.enums.PositionSide;
-import com.binance.connector.client.enums.TimeInForce;
 import examples.future.FutureClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +9,9 @@ public class NewOrder  extends FutureClient {
     public static void main(String[] args) {
         //買入 開多 市價單
         parameters.put("symbol", "BTCUSDT");
-        parameters.put("side", OrderSide.BUY.toString());
-        parameters.put("type", OrderTypes.MARKET.toString());
-        parameters.put("positionSide", PositionSide.LONG.toString());
+        parameters.put("side", "BUY");
+        parameters.put("type", "MARKET");
+        parameters.put("positionSide", "LONG");
         //btc quantity
         parameters.put("quantity", 0.01);
         parameters.put("timestamp", System.currentTimeMillis());
@@ -50,9 +46,9 @@ public class NewOrder  extends FutureClient {
 
 //        // 買入 開空 市價單 不能開待了解
 //        parameters.put("symbol", "BTCUSDT");
-//        parameters.put("side", OrderSide.BUY.toString());
-//        parameters.put("type", OrderTypes.MARKET.toString());
-//        parameters.put("positionSide", PositionSide.SHORT.toString());
+//        parameters.put("side", "BUY");
+//        parameters.put("type", "MARKET");
+//        parameters.put("positionSide", "SHORT");
 //        //btc quantity
 //        parameters.put("quantity", 0.01);
 //        parameters.put("timestamp", System.currentTimeMillis());
@@ -61,10 +57,10 @@ public class NewOrder  extends FutureClient {
 
         //買入 開多 限價單
 //        parameters.put("symbol", "BTCUSDT");
-//        parameters.put("side", OrderSide.BUY.toString());
-//        parameters.put("type", OrderTypes.LIMIT.toString());
-//        parameters.put("positionSide", PositionSide.LONG.toString());
-//        parameters.put("timeInForce", TimeInForce.GTC.toString());
+//        parameters.put("side", "BUY");
+//        parameters.put("type", "LIMIT");
+//        parameters.put("positionSide", "LONG");
+//        parameters.put("timeInForce", "GTC");
 //        parameters.put("price", 20000);
 //        //btc quantity
 //        parameters.put("quantity", 0.01);
@@ -97,9 +93,9 @@ public class NewOrder  extends FutureClient {
          */
         // 賣單 平多 市價
 //        parameters.put("symbol", "BTCUSDT");
-//        parameters.put("side", OrderSide.SELL.toString());
-//        parameters.put("type", OrderTypes.MARKET.toString());
-//        parameters.put("positionSide", PositionSide.LONG.toString());
+//        parameters.put("side", "SELL");
+//        parameters.put("type", "MARKET");
+//        parameters.put("positionSide", "LONG");
 //        //btc quantity
 //        parameters.put("quantity", 0.01);
 //        String result = client.createTrade().newOrder(parameters);

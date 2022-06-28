@@ -1,7 +1,5 @@
 package examples.future.trade;
 
-import com.binance.connector.client.enums.MarginType;
-import com.binance.connector.client.enums.PositionSide;
 import examples.future.FutureClient;
 import org.json.JSONObject;
 import org.slf4j.Logger;
@@ -13,7 +11,7 @@ public class PositionMargin extends FutureClient {
     public static void main(String[] args) {
         try {
             parameters.put("symbol", "BTCUSDT");
-            parameters.put("positionSide", PositionSide.LONG);
+            parameters.put("positionSide", "LONG");
             parameters.put("amount","100");
             parameters.put("type", 2);
             String result = client.createTrade().positionMargin(parameters);

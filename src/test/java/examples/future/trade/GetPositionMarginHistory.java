@@ -1,6 +1,5 @@
 package examples.future.trade;
 
-import com.binance.connector.client.enums.PositionSide;
 import examples.future.FutureClient;
 import org.json.JSONObject;
 import org.slf4j.Logger;

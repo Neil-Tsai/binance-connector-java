@@ -1,9 +1,5 @@
 package examples.future.trade;
 
-import com.binance.connector.client.enums.OrderSide;
-import com.binance.connector.client.enums.OrderTypes;
-import com.binance.connector.client.enums.PositionSide;
-import com.binance.connector.client.enums.TimeInForce;
 import examples.future.FutureClient;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,10 +19,10 @@ public class NewBatchOrders extends FutureClient {
             //買入 開多 市價單
             JSONObject order = new JSONObject();
             order.put("symbol", "BTCUSDT");
-            order.put("side", OrderSide.BUY.toString());
-            order.put("type", OrderTypes.LIMIT.toString());
-            order.put("positionSide", PositionSide.LONG.toString());
-            order.put("timeInForce", TimeInForce.GTC.toString());
+            order.put("side", "BUY");
+            order.put("type", "LIMIT");
+            order.put("positionSide","LONG");
+            order.put("timeInForce", "GTC");
             order.put("price", String.valueOf(price));
             //btc quantity
             order.put("quantity", "0.01");
